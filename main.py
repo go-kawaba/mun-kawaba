@@ -41,7 +41,6 @@ async def on_message(message):
 
   if message.content.startswith('-gloss'):
     split = content.split(' ')
-    print(split[1:])
     reply = ''
     for i in split[1:]:
       if i in kw_words:
