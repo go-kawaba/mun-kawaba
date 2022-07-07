@@ -39,7 +39,7 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  if message.content.startswith('-gloss'):
+  if message.content.startswith('-g'):
     split = content.split(' ')
     reply = ''
     for i in split[1:]:
@@ -48,6 +48,10 @@ async def on_message(message):
       else:
         reply = reply + ' ' + gloss_compound(i)
     await message.channel.send(reply)
+  if content.startswith('-s'):
+    for i in content.split(' ')[1:]:
+      await message.channel.send(kw_tr[i])
+  
       
 keep_alive()
 client.run(my_secret)
