@@ -38,7 +38,7 @@ kw_en = {
   'fi' : 'think',
   'si' : 'feel',
   'ci' : 'want',
-  'li' : 'exists',
+  'li' : 'reject',
   'ji' : 'touch',
   'wi' : 'see',
   'hi' : 'hear',
@@ -147,7 +147,7 @@ kw_en = {
   'jon' : 'play',
   'won' : 'laugh',
   'hon' : 'learn',
-  'mon' : 'name',
+  'mon' : 'sex',
 
   'na' : '**ᴛ**',
   'ne' : '**s**',
@@ -161,10 +161,10 @@ kw_en = {
   'nun' : 'ᴏ̨ɴ',
   'non' : 'ᴏ̨ᴜᴏ',
 
-  'a' : '**but**',
+  'a' : '**for**',
   'e' : '**and**',
   'i' : '**or**',
-  'u' : '**for**',
+  'u' : '**but**',
   'o' : '**of**',
 
   'an' : '**about**',
@@ -220,7 +220,7 @@ kw_tr= {
   'fi' : 'think',
   'si' : 'feel',
   'ci' : 'want',
-  'li' : 'exists',
+  'li' : 'reject',
   'ji' : 'touch',
   'wi' : 'see',
   'hi' : 'hear',
@@ -329,12 +329,12 @@ kw_tr= {
   'jon' : 'play',
   'won' : 'laugh',
   'hon' : 'learn',
-  'mon' : 'name',
+  'mon' : 'sex',
 
-  'na' : '**ᴛ**',
+  'na' : '**ᴄ**',
   'ne' : '**s**',
   'ni' : '**ʟ**',
-  'nu' : '**ᴄ**',
+  'nu' : '**ᴛ**',
   'no' : '**ᴏ**',
   
   'nan' : 'ᴇᴍᴘʜ',
@@ -343,10 +343,10 @@ kw_tr= {
   'nun' : 'ᴏ̨ɴ',
   'non' : 'ᴏ̨ᴜᴏ',
 
-  'a' : '**but**',
+  'a' : '**for**',
   'e' : '**and**',
   'i' : '**or**',
-  'u' : '**for**',
+  'u' : '**but**',
   'o' : '**of**',
 
   'an' : '**about**',
