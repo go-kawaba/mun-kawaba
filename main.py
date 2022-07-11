@@ -43,10 +43,11 @@ async def on_message(message):
     split = content.split(' ')
     reply = ''
     for i in split[1:]:
-      if i in kw_words:
-        reply = reply + ' ' + kw_en[i]
-      else:
+      try:
         reply = reply + ' ' + gloss_compound(i)
+      except:
+        reply = reply + ' ' + "???"
+        await message.channel.send("You used a word that I don't know, hence the '???'")
     await message.channel.send(reply)
   if content.startswith('-s'):
     for i in content.split(' ')[1:]:
