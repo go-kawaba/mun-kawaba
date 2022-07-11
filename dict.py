@@ -98,7 +98,7 @@ kw_en = {
   'fen' : 'smooth',
   'sen' : 'heavy',
   'cen' : 'strong',
-  'len' : 'now',
+  'len' : 'new',
   'jen' : 'hot',
   'wen' : 'cold',
   'hen' : 'hole',
