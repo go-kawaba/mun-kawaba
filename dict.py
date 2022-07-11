@@ -19,7 +19,7 @@ kw_en = {
   'ke' : 'big',
   'be' : 'small',
   'de' : 'none',
-  'ge' : 'few'',
+  'ge' : 'few',
   'fe' : 'some',
   'se' : 'many',
   'ce' : 'all',
