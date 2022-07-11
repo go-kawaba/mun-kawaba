@@ -35,7 +35,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  content = message.content
+  content = message.content.replace("’", "'").replace("‘", "'")
   if message.author == client.user:
     return
 
@@ -47,8 +47,8 @@ async def on_message(message):
         reply = reply + ' ' + gloss_compound(i)
       except:
         reply = reply + ' ' + "???"
-        await message.channel.send("You used a word that I don't know, hence the '???'")
-    await message.channel.send(reply)
+        await message.channel.send("I don't know the word `" + i + "`.")
+    await message.channel.send("> " + reply)
   if content.startswith('-s'):
     for i in content.split(' ')[1:]:
       await message.channel.send(kw_tr[i])
