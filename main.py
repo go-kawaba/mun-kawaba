@@ -27,6 +27,9 @@ def gloss_compound(compound):
     pieces = split_compound(compound)
     return '-'.join([kw_en[i] for i in pieces])
 
+
+info = "Hi, I am **hun kawaba**, a discord bot for the kawaba language.\n\n> Provide a naive gloss of a kawaba sentence:  `-g [kawaba sentence]`\n\n> Search for a word: `-s [word]` (unfinished)\n\n> Show you this message: `-i` or `-info`"
+
 client = discord.Client()
 
 @client.event
@@ -49,9 +52,13 @@ async def on_message(message):
         reply = reply + ' ' + "???"
         await message.channel.send("I don't know the word `" + i + "`.")
     await message.channel.send("> " + reply)
+    
   if content.startswith('-s'):
     for i in content.split(' ')[1:]:
       await message.channel.send(kw_tr[i])
+
+  if content.startswith('-i'):
+    await message.channel.send(info)
   
       
 keep_alive()
