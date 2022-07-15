@@ -7,7 +7,6 @@ authors = ["GJ-u", "der-teufel-programming"]
 [tool.poetry.dependencies]
 python = "^3.9"
 py-cord = "^2.0.0"
-python-dotenv = "^0.20.0"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.20.0"
@@ -21,7 +20,7 @@ multi_line_output = 3
 
 [tool.flake8]
 max-line-length = 88
-extend-ignore = ["E203", "E501"] # E501 being ignored is temporary
+extend-ignore = ["E203", "E501", "E266"] # E501 being ignored is temporary
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
