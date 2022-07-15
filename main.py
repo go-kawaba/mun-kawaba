@@ -38,7 +38,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  content = message.content.replace("’", "'").replace("‘", "'")
+  content = message.content.replace("’", "'").replace("‘", "'").replace(",","").replace(".","")
   if message.author == client.user:
     return
 
