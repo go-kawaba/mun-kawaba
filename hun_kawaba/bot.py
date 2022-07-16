@@ -59,6 +59,13 @@ async def info(ctx: commands.Context):
     )
 
 
+@bot.bridge_command(
+  description="Sends message on user join.",
+  guild_ids=config.TEST_GUILDS
+)
+async def on_member_join(member):
+    await channel.send("Welcome to go'okawaba! Please introduce yourself in X and get roles in Y.")
+
 # search command not implemented yet
 
 
