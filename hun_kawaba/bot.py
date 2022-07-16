@@ -1,6 +1,7 @@
 from typing import List
 
 import discord
+from discord import utils
 from discord.ext import bridge, commands
 
 import config
@@ -59,13 +60,6 @@ async def info(ctx: commands.Context):
     )
 
 
-@bot.bridge_command(
-  description="Sends message on user join.",
-  guild_ids=config.TEST_GUILDS
-)
-async def on_member_join(member):
-    await channel.send("Welcome to go'okawaba! Please introduce yourself in X and get roles in Y.")
-
 # search command not implemented yet
 
 
@@ -83,6 +77,15 @@ async def on_reaction_add(reaction: discord.Reaction, user: discord.User):
     if reaction.message.author == bot.user:
         if reaction.emoji == "❌":
             await reaction.message.delete()
+
+
+@bot.event
+async def on_member_join(member: discord.Member):
+    # Channel is hard coded for now
+    channel = utils.get(member.guild.text_channels, id=994091671740493865)
+    await channel.send(
+        f"Welcome to go'okawaba, {member.mention}! Please introduce yourself in X and get roles in Y."
+    )
 
 
 ### Utilities
