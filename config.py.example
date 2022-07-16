@@ -1,0 +1,6 @@
+import logging
+
+
+TOKEN = "Your token here!"
+LOG_LEVEL = logging.INFO
+TEST_GUILDS = None    # Make this a list of guild IDs!
