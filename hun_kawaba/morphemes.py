@@ -3,23 +3,25 @@ import re
 
 class Word:
     content: str
-    non_word: bool
+    loan_word: bool
+    invalid_word: bool
 
     morphemes: tuple[str, ...] | None
 
-    def __init__(self, content: str, non_word=False):
+    def __init__(self, content: str, loan_word=False, invalid_word=False):
         self.content = content
-        self.non_word = non_word
+        self.loan_word = loan_word
+        self.invalid_word = invalid_word
 
-        if not non_word:
+        if not loan_word:
             morpheme_pattern = re.compile(r"[ptkbdgfscljwhmn]?[aiueo]n?", re.IGNORECASE)
             self.morphemes = tuple(morpheme_pattern.findall(content))
 
     def __str__(self):
-        return f"<hun_kawaba.Word object; content='{self.content}', non_word={self.non_word}>"
+        return f"<hun_kawaba.Word object; content='{self.content}', loan_word={self.loan_word}, invalid_word={self.invalid_word}>"
 
     def __repr__(self):
-        return f"<hun_kawaba.Word object; content='{self.content}', non_word={self.non_word}>"
+        return f"<hun_kawaba.Word object; content='{self.content}', loan_word={self.loan_word}, invalid_word={self.invalid_word}>"
 
 
 def parse_sentence(sentence: str):
@@ -28,20 +30,27 @@ def parse_sentence(sentence: str):
         sentence.replace("‘", "'").replace("’", "'").replace("“", '"').replace("”", '"')
     )
 
+    split_sentence = fixed_sentence.split(" ")
+
     # Create the regular expression patterns for matching with the text
-    word_pattern = re.compile(r"('?[ptkbdgfscljwhmn]?[aiueo]n?'?)+", re.IGNORECASE)
-    loan_word_pattern = re.compile(
-        r"(?<!\S)'([ptkbdgfscljwhmn]?[aiueo]n?)+'(?=.)?", re.IGNORECASE
+    kawaba_word_pattern = re.compile(
+        r"('?[ptkbdgfscljwhmn]?[aiueo]n?'?)+", re.IGNORECASE
     )
+    loan_word_pattern = re.compile(r"(?<!\S)'(\S?)+'(?=.)?", re.IGNORECASE)
 
     words: list[Word] = []
 
-    for match in word_pattern.finditer(fixed_sentence):
-        # Get the string that was found to have matched the regex
-        group = match.group()
+    # working on detecting non-kawaba words
 
+    for word in split_sentence:
         words.append(
-            Word(group, non_word=True if loan_word_pattern.fullmatch(group) else False)
+            Word(
+                word,
+                loan_word=False if loan_word_pattern.fullmatch(word) is None else True,
+                invalid_word=False
+                if kawaba_word_pattern.fullmatch(word) is not None
+                else True,
+            )
         )
 
     return words

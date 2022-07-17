@@ -27,15 +27,21 @@ async def gloss(ctx: commands.Context, *, sentence: str):
     errors = ""
 
     for word in words:
-        if not word.non_word:
+        if not word.loan_word and not word.invalid_word:
             try:
                 reply += "-".join([kw_en[morpheme] for morpheme in word.morphemes])
             except KeyError as e:
-                # If the compound is not present in the dictionary (should be impossible with regex?)
+                # If the compound is not present in the dictionary
+                # (should be impossible with the regex?)
                 reply += "???"
                 errors += f"\nInvalid morpheme `{e.args[0]}`."
         else:
             reply += word.content
+
+        if word.invalid_word:
+            if not word.loan_word:
+                errors += f"\nInvalid word `{word.content}`."
+
         reply += " "
 
     await ctx.reply(f"> {reply}\n{errors}")
