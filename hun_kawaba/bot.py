@@ -51,7 +51,7 @@ async def gloss(ctx: bridge.BridgeContext, *, sentence: str):
 @bot.bridge_command(description="Searches for a word.", guild_ids=config.TEST_GUILDS)
 async def search(ctx: bridge.BridgeContext, text: str):
     matches: list[tuple[str, int]] = process.extractBests(
-        text, kw_tr.keys(), score_cutoff=90, limit=50
+        text, kw_tr.keys(), score_cutoff=80, limit=50
     )
 
     if not matches:
