@@ -34,6 +34,8 @@ async def gloss(ctx: commands.Context, *, sentence: str):
                 # If the compound is not present in the dictionary (should be impossible with regex?)
                 reply += "???"
                 errors += f"\nInvalid morpheme `{e.args[0]}`."
+        else:
+            reply += word.content
         reply += " "
 
     await ctx.reply(f"> {reply}\n{errors}")

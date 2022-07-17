@@ -41,7 +41,7 @@ def parse_sentence(sentence: str):
         group = match.group()
 
         words.append(
-            Word(group, non_word=True if loan_word_pattern.match(group) else False)
+            Word(group, non_word=True if loan_word_pattern.fullmatch(group) else False)
         )
 
     return words
