@@ -9,11 +9,22 @@ class Word:
     morphemes: tuple[str, ...] | None
 
     def __init__(self, content: str, loan_word=False, invalid_word=False):
+        """A container for words in kawaba. Primarily used by the parse_sentence function.
+
+        Parameters
+        ----------
+        content : str
+            The full word.
+        loan_word : bool, optional
+            If this word should be ignored from morpheme splitting.
+        invalid_word : bool, optional
+            If this word does not follow the phonotactics and/or orthography of kawaba.
+        """
         self.content = content
         self.loan_word = loan_word
         self.invalid_word = invalid_word
 
-        if not loan_word:
+        if not loan_word and not invalid_word:
             morpheme_pattern = re.compile(r"[ptkbdgfscljwhmn]?[aiueo]n?", re.IGNORECASE)
             self.morphemes = tuple(morpheme_pattern.findall(content))
 
@@ -39,8 +50,6 @@ def parse_sentence(sentence: str):
     loan_word_pattern = re.compile(r"(?<!\S)'(\S?)+'(?=.)?", re.IGNORECASE)
 
     words: list[Word] = []
-
-    # working on detecting non-kawaba words
 
     for word in split_sentence:
         words.append(
