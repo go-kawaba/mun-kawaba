@@ -2,11 +2,13 @@
 name = "hun-kawaba"
 version = "1.0.0"
 description = "Discord bot utilities for the kawaba language"
-authors = ["GJ-u", "der-teufel-programming"]
+authors = ["GJ-u", "der-teufel-programming", "mazziechai"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 py-cord = "^2.0.0"
+thefuzz = "^0.19.0"
+python-Levenshtein = "^0.12.2"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.20.0"
