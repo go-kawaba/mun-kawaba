@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 
 
 class Word:
@@ -6,7 +7,7 @@ class Word:
     loan_word: bool
     invalid_word: bool
 
-    morphemes: tuple[str, ...] | None
+    morphemes: Optional[tuple[str, ...]]
 
     def __init__(self, content: str, loan_word=False, invalid_word=False):
         """A container for words in kawaba. Primarily used by the parse_sentence function.
