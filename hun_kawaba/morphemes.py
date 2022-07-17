@@ -43,23 +43,23 @@ def parse_sentence(sentence: str):
 
     split_sentence = fixed_sentence.split(" ")
 
+    words: list[Word] = []
+
+    for word in split_sentence:
+        words.append(create_word(word))
+
+    return words
+
+
+def create_word(word: str):
     # Create the regular expression patterns for matching with the text
     kawaba_word_pattern = re.compile(
         r"('?[ptkbdgfscljwhmn]?[aiueo]n?'?)+", re.IGNORECASE
     )
     loan_word_pattern = re.compile(r"(?<!\S)'(\S?)+'(?=.)?", re.IGNORECASE)
 
-    words: list[Word] = []
-
-    for word in split_sentence:
-        words.append(
-            Word(
-                word,
-                loan_word=False if loan_word_pattern.fullmatch(word) is None else True,
-                invalid_word=False
-                if kawaba_word_pattern.fullmatch(word) is not None
-                else True,
-            )
-        )
-
-    return words
+    return Word(
+        word,
+        loan_word=False if loan_word_pattern.fullmatch(word) is None else True,
+        invalid_word=False if kawaba_word_pattern.fullmatch(word) is not None else True,
+    )
