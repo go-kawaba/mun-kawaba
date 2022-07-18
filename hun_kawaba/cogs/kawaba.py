@@ -106,6 +106,6 @@ class KawabaCog(commands.Cog):
         await ctx.reply(
             "Hi, I am **hun kawaba**, a Discord bot for the kawaba language.\n"
             "> `/gloss [sentence]` provides a naive gloss of a kawaba sentence.\n"
-            "> `/search [word]` searches for a word (unimplemented)\n"
+            "> `/search [word]` fuzzy searches for a word.\n"
             "> `/info` shows you this message.\n"
         )
