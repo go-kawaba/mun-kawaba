@@ -88,8 +88,23 @@ class KawabaCog(commands.Cog):
             for _ in range(5):
                 try:
                     match = matches.pop(0)
+
                     definition = jace[match[0]]["Definition"]
-                    page += f"**{match[0]}** ({match[1]}%)\n> {definition}\n"
+                    example = jace[match[0]]["Example"]
+                    see_also = jace[match[0]]["See Also"]
+
+                    if definition:
+                        definition = "> *" + definition + "*\n"
+
+                    if example:
+                        example = "> Example: " + example + "\n"
+
+                    if see_also:
+                        see_also = "> See Also: " + see_also + "\n"
+
+                    page += (
+                        f"**{match[0]}** ({match[1]}%)\n{definition}{example}{see_also}"
+                    )
                 except IndexError:
                     break
 
